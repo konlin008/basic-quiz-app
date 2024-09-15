@@ -58,6 +58,6 @@ html,body{
     border-radius: 5px;
     margin-top: 1vw;
     font-size: 0.8vw;
-    display: block;
+    display: none;
     cursor: pointer;
 }
