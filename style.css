@@ -61,3 +61,9 @@ html,body{
     display: none;
     cursor: pointer;
 }
+.correct{
+    background-color: rgba(26, 192, 26, 0.432);
+}
+.wrong{
+    background-color: rgba(218, 91, 32, 0.479);
+}

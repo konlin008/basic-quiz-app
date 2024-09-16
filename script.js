@@ -32,9 +32,21 @@ async function fetchQuestion() {
     const button= document.createElement("button")
     button.innerHTML=answer
     button.classList.add="btn"
+    button.addEventListener("click",()=>handleAnswerClick(answer)
+    )
     answerBtns.appendChild(button)
   });
+  hasAnswered = false;
+  nextBtn.disabled = true; 
   console.log(shuffledAnswers);
+}
+function handleAnswerClick(selectAnswer){
+  if(selectAnswer===correctAnswer){
+    button.classList.add("correct")
+  }
+  else{
+    selectAnswer.classList.add("wrong")
+  }
 }
 function startQuiz() {
   currentQuestionIndex = 0;
@@ -42,9 +54,11 @@ function startQuiz() {
   nextBtn.innerHTML = "Next";
   fetchQuestion();
 }
+
 function reSetState(){
   while(answerBtns.firstChild){
     answerBtns.removeChild(answerBtns.firstChild);
   }
 }
+
 startQuiz();
