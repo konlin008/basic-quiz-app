@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins";
+    font-weight: 500;
 }
 html,body{
     height: 100%;
@@ -19,17 +21,21 @@ html,body{
 .container{
     background-color: #fff;
     width: 35vw;
-    min-height: 10vh;
+    min-height: 20vh;
     border-radius: 5px;
     padding: 1.5vw 1vw;
 }
+.qn{
+    display: none;
+}
 .container h1{
     color: #001e4d;
+    border-bottom: 1px solid #000;
 }
 .quiz h3{
     color: #001e4d;
     padding: 1vw 0;
-    border-top: 1px solid #000;
+
 }
 .answers{
     display: flex;
@@ -45,7 +51,7 @@ html,body{
     border-radius: 5px;
     transition: all 0.3s;
 }
-.answers button:hover{
+.answers button:hover:not([disabled]){
     background-color: #dfdcdc;
     color: #000;
     cursor: pointer;
@@ -57,13 +63,16 @@ html,body{
     padding: 0.4vw 2vw;
     border-radius: 5px;
     margin-top: 1vw;
-    font-size: 0.8vw;
+    font-size: 1vw;
     display: none;
     cursor: pointer;
 }
 .correct{
-    background-color: rgba(26, 192, 26, 0.432);
-}
-.wrong{
-    background-color: rgba(218, 91, 32, 0.479);
-}
+    background-color: rgba(110, 233, 110, 0.76);
+    color: white;
+  }
+  
+  .inCorrect {
+    background-color: rgba(233, 44, 11, 0.774);
+    color: white;
+  }
