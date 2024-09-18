@@ -1,7 +1,7 @@
 const questionElement = document.querySelector("#question");
 const answerBtns = document.querySelector(".answers");
 const nextBtn = document.querySelector("#nextBtn");
-const qndiv=document.querySelector(".qn")
+const qndiv = document.querySelector(".qn");
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswer;
@@ -18,32 +18,35 @@ async function fetchQuestions(retryCount = 0) {
       `https:opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple`
     );
 
-    if (response.status === 429) { 
+    if (response.status === 429) {
       if (retryCount < maxRetries) {
-        console.warn(`Rate limit exceeded. Retrying in ${delay / 1000} seconds...`);
-        await new Promise(resolve => setTimeout(resolve, delay)); 
-        return fetchQuestions(retryCount + 1); 
+        console.warn(
+          `Rate limit exceeded. Retrying in ${delay / 1000} seconds...`
+        );
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        return fetchQuestions(retryCount + 1);
       } else {
-        throw new Error('Rate limit exceeded. Please try again later.');
+        throw new Error("Rate limit exceeded. Please try again later.");
       }
     }
 
     const data = await response.json();
 
     if (data.results.length === 0) {
-      throw new Error('No questions found');
+      throw new Error("No questions found");
     }
 
     questions = data.results;
     if (questions.length > 0) {
       displayQuestion();
     } else {
-      throw new Error('No questions available');
+      throw new Error("No questions available");
     }
   } catch (error) {
     console.error(error);
-    questionElement.innerHTML = 'An error occurred while fetching questions. Please try again later.';
-    nextBtn.style.display = 'none';
+    questionElement.innerHTML =
+      "An error occurred while fetching questions. Please try again later.";
+    nextBtn.style.display = "none";
   } finally {
     isFetching = false;
   }
@@ -51,7 +54,7 @@ async function fetchQuestions(retryCount = 0) {
 
 function displayQuestion() {
   reSetState();
-  qndiv.style.display="block"
+  qndiv.style.display = "block";
   const currentQuestion = questions[currentQuestionIndex].question;
   questionElement.innerHTML = `${currentQuestionIndex + 1}. ${currentQuestion}`;
 
@@ -61,7 +64,7 @@ function displayQuestion() {
 
   const shuffledAnswers = shuffleArray(allAnswers);
 
-  shuffledAnswers.forEach(answer => {
+  shuffledAnswers.forEach((answer) => {
     const button = document.createElement("button");
     button.innerHTML = answer;
     button.classList.add("btn");
@@ -69,26 +72,26 @@ function displayQuestion() {
     answerBtns.appendChild(button);
   });
 
-  nextBtn.style.display = 'none';
+  nextBtn.style.display = "none";
 }
 
 function handleAnswerClick(button, selectedAnswer) {
   const buttons = answerBtns.querySelectorAll("button");
-  buttons.forEach(btn => btn.disabled = true);
+  buttons.forEach((btn) => (btn.disabled = true));
 
   if (selectedAnswer === correctAnswer) {
-    button.style.backgroundColor = 'rgba(110, 233, 110, 0.76)';
+    button.style.backgroundColor = "rgba(110, 233, 110, 0.76)";
     score++;
   } else {
-    button.style.backgroundColor = 'rgba(233, 44, 11, 0.774)';
-    buttons.forEach(btn => {
+    button.style.backgroundColor = "rgba(233, 44, 11, 0.774)";
+    buttons.forEach((btn) => {
       if (btn.innerHTML === correctAnswer) {
-        btn.style.backgroundColor = 'rgba(110, 233, 110, 0.76)';
+        btn.style.backgroundColor = "rgba(110, 233, 110, 0.76)";
       }
     });
   }
 
-  nextBtn.style.display = 'block';
+  nextBtn.style.display = "block";
 }
 
 function shuffleArray(array) {
