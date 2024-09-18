@@ -2,7 +2,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-family: "Poppins";
   font-weight: 500;
 }
@@ -14,10 +15,17 @@ body {
 #main {
   min-height: 100vh;
   width: 100%;
+  background: -o-linear-gradient(315deg, #0f0c29, #302b63, #24243e);
   background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .container {
   background-color: #fff;
@@ -38,8 +46,13 @@ body {
   padding: 1vw 0;
 }
 .answers {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: 1vw;
 }
 .answers button {
@@ -49,6 +62,8 @@ body {
   text-align: left;
   padding: 0.5vw;
   border-radius: 5px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
   transition: all 0.3s;
 }
 .answers button:hover:not([disabled]) {

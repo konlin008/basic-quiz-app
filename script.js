@@ -14,9 +14,9 @@ async function fetchQuestions(retryCount = 0) {
 
   try {
     isFetching = true;
-    const response = await fetch(
-      `https:opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple`
-    );
+    const apiUrl =
+      "https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple";
+    const response = await fetch(apiUrl);
 
     if (response.status === 429) {
       if (retryCount < maxRetries) {
