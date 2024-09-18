@@ -84,7 +84,7 @@ body {
 }
 @media (max-width: 600px) {
   .container {
-    width: 35vh;
+    width: 40vh;
     padding: 1.5vw 1vw;
   }
   .container h1 {
@@ -93,20 +93,22 @@ body {
     border-bottom: 1px solid #000;
   }
   .answers {
-    gap: 5vw;
+    gap: 7vw;
   }
   .answers button {
-    padding: 2vw;
+    padding: 3.5vw 2vw;
+    font-size: 4vw;
   }
   #nextBtn {
-    background-color: #302b63;
-    color: #fff;
-    border: none;
-    padding: 2.5vw 8vw;
-    border-radius: 5px;
-    margin-top: 5vw;
-    font-size: 3vw;
+    padding: 2.5vw 10vw;
+    margin-top: 7vw;
+    font-size: 4vw;
     display: none;
     cursor: pointer;
+  }
+  .quiz h3 {
+    color: #001e4d;
+    padding: 2vh 0;
+    font-size: 6vw;
   }
 }
